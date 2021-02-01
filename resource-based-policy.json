@@ -1,0 +1,40 @@
+{
+  "Id": "demo-policy",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "accessible",
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+                   "arn:aws:s3:::<S3 BUCKET NAME>/accessible",
+                   "arn:aws:s3:::<S3 BUCKET NAME>/accessible/*"
+                   ],
+      "Principal": {
+        "AWS": [
+          "<YOUR IAM USER ARN>"
+        ]
+      }
+    },
+    {
+      "Sid": "not-accessible",
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Effect": "Deny",
+      "Resource": [
+                   "arn:aws:s3:::<S3 BUCKET NAME>/not-accessible",
+                   "arn:aws:s3:::<S3 BUCKET NAME>/not-accessible/*"
+                   ],
+      "Principal": {
+        "AWS": [
+          "<YOUR IAM USER ARN>"
+        ]
+      }
+    }
+  ]
+}
